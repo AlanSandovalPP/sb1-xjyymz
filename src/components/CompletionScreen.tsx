@@ -92,4 +92,3 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({
 };
 
 export default CompletionScreen;
-export default CompletionScreen;
