@@ -20,8 +20,15 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({
     
     try {
       const urlWithCredits = `${redirectUrl}?credits=${credits}`;
+      console.log('Intentando redirigir a:', urlWithCredits);
+      
+      if (!redirectUrl) {
+        throw new Error('URL de redirección no configurada');
+      }
+      
       window.location.href = urlWithCredits;
     } catch (err) {
+      console.error('Error durante la redirección:', err);
       setError('Hubo un error al redirigir. Por favor, intenta de nuevo.');
       setIsLoading(false);
     }
@@ -34,6 +41,10 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({
       transition={{ duration: 0.5 }}
       className="text-center space-y-6"
     >
+      <p className="text-sm text-gray-500 mt-2">
+        URL de redirección: {redirectUrl}
+      </p>
+
       <div className="flex justify-center">
         <motion.div 
           whileHover={{ scale: 1.05 }}
@@ -80,4 +91,5 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({
   );
 };
 
+export default CompletionScreen;
 export default CompletionScreen;
